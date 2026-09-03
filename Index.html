@@ -4086,25 +4086,68 @@ $('year')
    LOAD DATA DARI GOOGLE APPS SCRIPT
 ===================================================== */
 
-google.script.run
+/* =====================================================
+   LOAD DATA DARI GOOGLE APPS SCRIPT API
+   Versi untuk GitHub Pages
+===================================================== */
 
-  .withSuccessHandler(
-    renderWebsite
-  )
+const APPS_SCRIPT_URL =
+  'https://script.google.com/macros/s/AKfycbyFNNMjDsAqXm8_pjia8yLN-u3vrQjCjSm8p6IGmwrcHOnCpNJjWM_ILgFjYGdahbYJ/exec';
 
-  .withFailureHandler(
-    function(error) {
+function loadPublicDataFromAppsScript(){
+  if(!APPS_SCRIPT_URL || APPS_SCRIPT_URL.indexOf('GANTI_DENGAN_')===0){
+    console.error('URL Web App Apps Script belum diisi.');
+    $('tickerText').textContent='Website belum terhubung ke database.';
+    return;
+  }
 
+  const callbackName =
+    '__miHudaPublicData_' + Date.now();
+
+  let finished=false;
+  const script=document.createElement('script');
+
+  window[callbackName]=function(data){
+    finished=true;
+    try{
+      renderWebsite(data||{});
+    }catch(error){
       console.error(error);
-
-      $('tickerText')
-        .textContent =
-        'Gagal memuat data website.';
-
+      $('tickerText').textContent='Data website gagal ditampilkan.';
+    }finally{
+      delete window[callbackName];
+      script.remove();
     }
-  )
+  };
 
-  .getPublicData();
+  script.onerror=function(){
+    finished=true;
+    console.error('API Apps Script tidak dapat diakses.');
+    $('tickerText').textContent='Gagal memuat data website.';
+    delete window[callbackName];
+    script.remove();
+  };
+
+  script.src=
+    APPS_SCRIPT_URL +
+    (APPS_SCRIPT_URL.indexOf('?')>=0?'&':'?') +
+    'api=getPublicData&callback=' +
+    encodeURIComponent(callbackName) +
+    '&_=' + Date.now();
+
+  document.head.appendChild(script);
+
+  setTimeout(function(){
+    if(!finished){
+      console.error('API Apps Script timeout.');
+      $('tickerText').textContent='Koneksi database terlalu lama.';
+      delete window[callbackName];
+      script.remove();
+    }
+  },15000);
+}
+
+loadPublicDataFromAppsScript();
 
 /* =====================================================
    SIDEBAR MI AL HUDA KRAMAT
