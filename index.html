@@ -10,11 +10,155 @@
         content="#07543e">
 
   <meta name="description"
-        content="Website Resmi MI Al Huda Kramat">
+        content="Website resmi MI Al Huda Kramat Tegal. Informasi berita, pengumuman, agenda, prestasi siswa, galeri, profil madrasah, dan PPDB.">
 
-  <title>MI AL HUDA KRAMAT</title>
+  <meta name="keywords"
+        content="MI Al Huda Kramat, MI Al Huda Kramat Tegal, madrasah Kramat, sekolah Tegal, berita MI Al Huda Kramat, prestasi siswa, PPDB MI Al Huda Kramat">
+
+  <meta name="robots"
+        content="index, follow, max-image-preview:large">
+
+  <meta name="googlebot"
+        content="index, follow, max-image-preview:large">
+
+  <meta name="author"
+        content="MI Al Huda Kramat">
+
+  <meta name="application-name"
+        content="MI Al Huda Kramat">
+
+  <link id="seoCanonical"
+        rel="canonical"
+        href="https://mialhudakramat.github.io/">
+
+  <link id="siteFavicon"
+        rel="icon"
+        href=""
+        type="image/png">
+
+  <!-- Open Graph -->
+  <meta property="og:locale" content="id_ID">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MI Al Huda Kramat">
+  <meta property="og:title" content="MI Al Huda Kramat">
+  <meta property="og:description" content="Website resmi MI Al Huda Kramat Tegal. Berita, pengumuman, agenda, prestasi, galeri, profil madrasah, dan PPDB.">
+  <meta property="og:url" content="https://mialhudakramat.github.io/">
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="MI Al Huda Kramat">
+  <meta name="twitter:description" content="Website resmi MI Al Huda Kramat Tegal. Berita, pengumuman, agenda, prestasi, galeri, profil madrasah, dan PPDB.">
+
+  <title>MI Al Huda Kramat | Website Resmi Madrasah</title>
+
+  <script id="seoStructuredData" type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebSite",
+    "name":"MI Al Huda Kramat",
+    "url":"https://mialhudakramat.github.io/",
+    "inLanguage":"id-ID",
+    "publisher":{
+      "@type":"EducationalOrganization",
+      "name":"MI Al Huda Kramat"
+    }
+  }
+  </script>
 
   <style>
+
+    /* =====================================================
+       SEO ARTICLE DETAIL
+    ===================================================== */
+
+    .seo-article-view {
+      max-width: 1100px;
+      margin: 35px auto 55px;
+      padding: 0 20px;
+    }
+
+    .seo-article-card {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 28px;
+      box-shadow: 0 8px 30px rgba(0,0,0,.08);
+      border: 1px solid rgba(7,84,62,.10);
+    }
+
+    .seo-breadcrumb {
+      font-size: 14px;
+      margin-bottom: 18px;
+      color: #5d6f68;
+    }
+
+    .seo-breadcrumb a {
+      color: #07543e;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .seo-article-title {
+      color: #07543e;
+      font-size: clamp(28px, 4vw, 46px);
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+
+    .seo-article-meta {
+      color: #687872;
+      font-size: 14px;
+      margin-bottom: 22px;
+    }
+
+    .seo-article-image {
+      display: block;
+      width: 100%;
+      max-height: 620px;
+      object-fit: cover;
+      border-radius: 14px;
+      margin: 0 auto 24px;
+    }
+
+    .seo-article-content {
+      font-size: 17px;
+      line-height: 1.85;
+      color: #263b34;
+    }
+
+    .seo-article-content p {
+      margin: 0 0 16px;
+    }
+
+    .seo-back-link {
+      display: inline-block;
+      margin-top: 24px;
+      padding: 10px 16px;
+      border-radius: 9px;
+      background: #07543e;
+      color: #fff !important;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .seo-news-title-link {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .seo-news-title-link:hover {
+      color: #07543e;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 700px) {
+      .seo-article-card {
+        padding: 20px;
+      }
+
+      .seo-article-content {
+        font-size: 16px;
+      }
+    }
 
     * {
       box-sizing: border-box;
@@ -3291,6 +3435,16 @@ img#heroLogo {
 
   </main>
 
+  <!-- =====================================================
+       DETAIL BERITA SEO
+       Aktif otomatis ketika URL memiliki ?berita=...
+  ====================================================== -->
+  <section id="seoArticleView"
+           class="seo-article-view"
+           hidden
+           aria-label="Detail berita">
+  </section>
+
 
   <!-- =================================================
        SIDEBAR KANAN
@@ -3604,11 +3758,281 @@ function toggleMenu() {
    RENDER WEBSITE
 ===================================================== */
 
+
+/* =====================================================
+   SEO ENGINE - MI AL HUDA KRAMAT
+===================================================== */
+
+const SEO_SITE_URL = 'https://mialhudakramat.github.io/';
+const SEO_DEFAULT_TITLE = 'MI Al Huda Kramat | Website Resmi Madrasah';
+const SEO_DEFAULT_DESCRIPTION =
+  'Website resmi MI Al Huda Kramat Tegal. Informasi berita, pengumuman, agenda, prestasi siswa, galeri, profil madrasah, dan PPDB.';
+
+function seoText(value){
+  const div = document.createElement('div');
+  div.innerHTML = String(value || '');
+  return (div.textContent || div.innerText || '')
+    .replace(/\s+/g,' ')
+    .trim();
+}
+
+function seoDescription(value, max){
+  max = max || 160;
+  const text = seoText(value);
+  if(text.length <= max) return text;
+  return text.slice(0, max - 1).replace(/\s+\S*$/,'') + '…';
+}
+
+function seoSlug(value){
+  return seoText(value)
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g,'')
+    .replace(/[^a-z0-9]+/g,'-')
+    .replace(/^-+|-+$/g,'')
+    .slice(0,90) || 'berita';
+}
+
+function seoNewsKey(item){
+  return seoSlug(item.judul || item.Judul || 'berita') +
+    '--' +
+    encodeURIComponent(String(item.id || item.ID || Date.now()));
+}
+
+function seoNewsUrl(item){
+  return SEO_SITE_URL + '?berita=' + seoNewsKey(item);
+}
+
+function seoGetNewsParam(){
+  try{
+    return new URL(window.location.href).searchParams.get('berita') || '';
+  }catch(e){
+    return '';
+  }
+}
+
+function seoSetMeta(selector, value){
+  const el = document.querySelector(selector);
+  if(el) el.setAttribute('content', String(value || ''));
+}
+
+function seoSetLink(id, href){
+  const el = document.getElementById(id);
+  if(el) el.href = href;
+}
+
+function seoSetFavicon(url){
+  if(!url) return;
+  const favicon = document.getElementById('siteFavicon');
+  if(favicon) favicon.href = url;
+}
+
+function seoSetStructuredData(obj){
+  const el = document.getElementById('seoStructuredData');
+  if(el) el.textContent = JSON.stringify(obj, null, 2);
+}
+
+function normalizeBeritaItem(item){
+  item = item || {};
+  return {
+    id: item.id || item.ID || '',
+    judul: item.judul || item.Judul || '',
+    tanggal: item.tanggal || item.Tanggal || '',
+    kategori: item.kategori || item.Kategori || '',
+    gambar: item.gambar || item.Gambar || item.FotoUtama || item.fotoUtama || '',
+    fotoTambahan: item.fotoTambahan || item.FotoTambahan || '',
+    isi: item.isi || item.Isi || '',
+    aktif: item.aktif || item.Aktif || 'YA'
+  };
+}
+
+function normalizePublicData(data){
+  data = data || {};
+  const normalized = Object.assign({}, data);
+  normalized.Berita = (data.Berita || []).map(normalizeBeritaItem);
+  normalized.Pengumuman = data.Pengumuman || [];
+  normalized.Agenda = data.Agenda || [];
+  normalized.Galeri = data.Galeri || [];
+  normalized.Prestasi = data.Prestasi || [];
+  normalized.PPDB = data.PPDB || [];
+  normalized.Profil = data.Profil || [];
+  return normalized;
+}
+
+function seoFindNews(data){
+  const param = seoGetNewsParam();
+  if(!param) return null;
+
+  const berita = (data.Berita || []).map(normalizeBeritaItem);
+
+  return berita.find(function(item){
+    return seoNewsKey(item) === param;
+  }) || berita.find(function(item){
+    return String(item.id) === param;
+  }) || null;
+}
+
+function seoUpdateHome(data){
+  const profil = (data.Profil && data.Profil[0]) || {};
+  const schoolName = profil.nama || 'MI Al Huda Kramat';
+
+  const title = schoolName + ' | Website Resmi Madrasah';
+  const description =
+    'Website resmi ' + schoolName +
+    ' Tegal. Berita, pengumuman, agenda, prestasi siswa, galeri, profil madrasah, dan PPDB.';
+
+  document.title = title;
+  seoSetLink('seoCanonical', SEO_SITE_URL);
+
+  seoSetMeta('meta[name="description"]', seoDescription(description,160));
+  seoSetMeta('meta[property="og:type"]','website');
+  seoSetMeta('meta[property="og:title"]',title);
+  seoSetMeta('meta[property="og:description"]',description);
+  seoSetMeta('meta[property="og:url"]',SEO_SITE_URL);
+  seoSetMeta('meta[name="twitter:title"]',title);
+  seoSetMeta('meta[name="twitter:description"]',description);
+
+  if(profil.logo) seoSetFavicon(profil.logo);
+
+  seoSetStructuredData({
+    '@context':'https://schema.org',
+    '@type':'WebSite',
+    'name':schoolName,
+    'url':SEO_SITE_URL,
+    'inLanguage':'id-ID',
+    'description':seoDescription(description,300),
+    'publisher':{
+      '@type':'EducationalOrganization',
+      'name':schoolName,
+      'url':SEO_SITE_URL,
+      ...(profil.logo ? {'logo':{'@type':'ImageObject','url':profil.logo}} : {}),
+      ...(profil.telepon ? {'telephone':profil.telepon} : {}),
+      ...(profil.alamat ? {'address':profil.alamat} : {})
+    }
+  });
+}
+
+function seoUpdateArticle(data, item){
+  const profil = (data.Profil && data.Profil[0]) || {};
+  const schoolName = profil.nama || 'MI Al Huda Kramat';
+  const title = seoText(item.judul) + ' | ' + schoolName;
+  const description = seoDescription(item.isi,160);
+  const url = seoNewsUrl(item);
+  const image = item.gambar || profil.logo || '';
+
+  document.title = title;
+  seoSetLink('seoCanonical',url);
+
+  seoSetMeta('meta[name="description"]',description);
+  seoSetMeta('meta[property="og:type"]','article');
+  seoSetMeta('meta[property="og:title"]',title);
+  seoSetMeta('meta[property="og:description"]',description);
+  seoSetMeta('meta[property="og:url"]',url);
+  seoSetMeta('meta[property="og:image"]',image);
+  seoSetMeta('meta[name="twitter:title"]',title);
+  seoSetMeta('meta[name="twitter:description"]',description);
+  seoSetMeta('meta[name="twitter:image"]',image);
+
+  seoSetStructuredData({
+    '@context':'https://schema.org',
+    '@type':'NewsArticle',
+    'mainEntityOfPage':{
+      '@type':'WebPage',
+      '@id':url
+    },
+    'headline':seoText(item.judul),
+    'description':description,
+    'url':url,
+    'inLanguage':'id-ID',
+    ...(image ? {'image':[image]} : {}),
+    ...(item.tanggal ? {'datePublished':item.tanggal} : {}),
+    ...(item.kategori ? {'articleSection':seoText(item.kategori)} : {}),
+    'author':{
+      '@type':'Organization',
+      'name':schoolName
+    },
+    'publisher':{
+      '@type':'EducationalOrganization',
+      'name':schoolName,
+      'url':SEO_SITE_URL,
+      ...(profil.logo ? {'logo':{'@type':'ImageObject','url':profil.logo}} : {})
+    }
+  });
+}
+
+function renderSeoArticleIfRequested(data){
+  const box = document.getElementById('seoArticleView');
+  if(!box) return;
+
+  const item = seoFindNews(data);
+
+  if(!item){
+    box.hidden = true;
+    seoUpdateHome(data);
+    return;
+  }
+
+  box.hidden = false;
+  seoUpdateArticle(data,item);
+
+  const paragraphs = String(item.isi || '')
+    .split(/\r?\n+/)
+    .map(function(p){ return seoText(p); })
+    .filter(Boolean)
+    .map(function(p){ return '<p>' + escapeHTML(p) + '</p>'; })
+    .join('');
+
+  box.innerHTML = `
+    <article class="seo-article-card">
+      <nav class="seo-breadcrumb" aria-label="Breadcrumb">
+        <a href="${SEO_SITE_URL}">Beranda</a>
+        &nbsp;›&nbsp; Berita
+        &nbsp;›&nbsp; ${escapeHTML(item.judul)}
+      </nav>
+
+      <h1 class="seo-article-title">
+        ${escapeHTML(item.judul)}
+      </h1>
+
+      <div class="seo-article-meta">
+        📅 ${escapeHTML(item.tanggal || '')}
+        ${item.kategori ? ' · ' + escapeHTML(item.kategori) : ''}
+      </div>
+
+      ${item.gambar ? `
+        <img
+          class="seo-article-image"
+          src="${escapeHTML(item.gambar)}"
+          alt="${escapeHTML(item.judul)}"
+          loading="eager"
+          decoding="async">
+      ` : ''}
+
+      <div class="seo-article-content">
+        ${paragraphs || '<p>Informasi berita belum tersedia.</p>'}
+      </div>
+
+      <a class="seo-back-link" href="${SEO_SITE_URL}#berita">
+        ← Kembali ke Berita
+      </a>
+    </article>
+  `;
+
+  setTimeout(function(){
+    box.scrollIntoView({behavior:'smooth',block:'start'});
+  },100);
+}
+
 function renderWebsite(data) {
+
+  data = normalizePublicData(data);
 
   renderSidebar(data);
 
   console.log('DATA WEBSITE:', data);
+
+  seoUpdateHome(data);
+  renderSeoArticleIfRequested(data);
 
 
   /* ---------------------------------------------------
@@ -3807,7 +4231,11 @@ function renderWebsite(data) {
             </div>
 
             <h3>
-              ${escapeHTML(item.judul)}
+              <a
+                class="seo-news-title-link"
+                href="${seoNewsUrl(item)}">
+                ${escapeHTML(item.judul)}
+              </a>
             </h3>
 
             <p>
@@ -4110,7 +4538,7 @@ function loadPublicDataFromAppsScript(){
   window[callbackName]=function(data){
     finished=true;
     try{
-      renderWebsite(data||{});
+      renderWebsite(normalizePublicData(data||{}));
     }catch(error){
       console.error(error);
       $('tickerText').textContent='Data website gagal ditampilkan.';
